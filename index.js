@@ -65,7 +65,9 @@ class Person {
 const hope = new Person('Hope', 35);
 
 console.log(hope.toString());
-hope.eat('taco');
+hope.eat('someFood');
+console.log(hope.stomach);
+hope.poop();
 console.log(hope.stomach);
 /*
   TASK 2
@@ -82,7 +84,24 @@ console.log(hope.stomach);
 */
 
 class Car {
+  constructor(model, milesPerGallon) {
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
 
+  fill(gallons) {
+    this.tank = this.tank + gallons;
+  }
+  
+  drive(distance) {
+    this.odometer = this.odometer + distance;
+    this.tank = this.tank - (distance/this.milesPerGallon);
+    if(this.tank <= 0) {
+      return `I ran out of fuel at ${this.odometer} miles`;
+    }
+  }
 }
 
 /*
